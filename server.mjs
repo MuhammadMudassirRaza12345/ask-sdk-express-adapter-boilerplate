@@ -158,7 +158,7 @@ const skillBuilder = SkillBuilders.custom()
     LaunchRequestHandler,
     HelloWorldIntentHandler,
     workExpIntentHandler,
-    weatherIntentHandler,
+    WeatherintentHandler,
     bookRoomIntentHandler
   )
   .addErrorHandlers(
