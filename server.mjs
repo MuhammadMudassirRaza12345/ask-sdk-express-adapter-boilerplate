@@ -1,11 +1,12 @@
 import express from "express";
 import Alexa, { SkillBuilders } from 'ask-sdk-core';
+// import cors from "cors";
 import morgan from "morgan";
 import { ExpressAdapter } from 'ask-sdk-express-adapter';
 import axios from "axios";
 
 const app = express();
-app.use(morgan("dev"))
+app.use(morgan("dev"));
 const PORT = process.env.PORT || 8000;
 
 const LaunchRequestHandler = {
@@ -13,7 +14,7 @@ const LaunchRequestHandler = {
       return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
   },
   handle(handlerInput) {
-      const speakOutput = 'Assalam Alikum and Hello and Welcome, i am assitant of Mr.mudassir . Which would you like to ask? i can tell his name and working experience.';
+      const speakOutput = 'Response from express serverAssalam Alikum and Hello and Welcome, i am assitant of Mr.mudassir . Which would you like to ask? i can tell his name and working experience.';
 
       return handlerInput.responseBuilder
           .speak(speakOutput)
@@ -28,7 +29,7 @@ const HelloWorldIntentHandler = {
           && Alexa.getIntentName(handlerInput.requestEnvelope) === 'nameintent';
   },
   handle(handlerInput) {
-      const speakOutput = 'My name is Muhammad Mudassir Raza,my friends call me malik,would like know my work experience';
+      const speakOutput = 'My name is Muhammad Mudassir Raza,my friends call me mudassir,would like know my work experience';
 
       return handlerInput.responseBuilder
           .speak(speakOutput)
@@ -68,7 +69,7 @@ const  WeatherintentHandler = {
        console.log("data 1",response.data);
       console.log("data 2 ", response.data.current.condition.text);
       console.log( "data 3", response.data.current.temp_c);
-      const speakOutput = `In ${cityName.value} is ${response.body.current.temp_c} degree centigrade and ${response.data.current.condition.text}`;
+      const speakOutput = `In ${cityName.value} temperature is ${response.data.current.temp_c} degree centigrade and weather is ${response.data.current.condition.text}`;
       return handlerInput.responseBuilder
           .speak(speakOutput)
           // .reprompt('To know my experience say, what is your work experience')
@@ -84,7 +85,7 @@ const  WeatherintentHandler = {
           .getResponse();
    }
    }
-};
+}; 
 const bookRoomHandler = {
   canHandle(handlerInput) {
       return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
