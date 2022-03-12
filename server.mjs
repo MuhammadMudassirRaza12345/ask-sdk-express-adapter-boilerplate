@@ -6,7 +6,7 @@ import axios from "axios";
 
 const app = express();
 app.use(morgan("dev"))
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -157,10 +157,10 @@ const skillBuilder = SkillBuilders.custom()
   .addRequestHandlers(
     LaunchRequestHandler,
     HelloWorldIntentHandler,
-    workExpIntentHandler,
+    workexperHandler,
     WeatherintentHandler,
-    bookRoomIntentHandler
-  )
+    bookRoomHandler,
+      )
   .addErrorHandlers(
     ErrorHandler
   )
